@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+
+    <model name="wingbox">
+      <!-- <allow_auto_disable>true</allow_auto_disable> -->
+      <link name="mesh_link">
+        <pose>0 0 0 0 0 0</pose>
+
+        <collision name="mesh_collision">
+          <geometry>
+    	    <mesh>
+	      <uri>model://coverage/world/34WIngBay_Bin_151111.STL</uri>
+	      <scale>1.0 1.0 1.0</scale>
+	    </mesh>
+    	    <!-- <mesh><uri>model://gazebo_ray_trace/worlds/base.stl</uri></mesh> -->
+            <!-- <box> -->
+            <!--   <size>1 1 1</size> -->
+            <!-- </box> -->
+
+          </geometry>
+
+        </collision>
+
+        <visual name="mesh_visual">
+          <geometry>
+    	    <mesh>
+	      <uri>model://coverage/world/34WIngBay_Bin_151111.STL</uri>
+	      <scale>1.0 1.0 1.0</scale>
+	    </mesh>
+    	    <!-- <mesh><uri>model://gazebo_ray_trace/worlds/base.stl</uri></mesh> -->
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <plugin filename="libdistance_ray_trace.so" name="ray_tracer"/>
+  </world>
+</sdf>

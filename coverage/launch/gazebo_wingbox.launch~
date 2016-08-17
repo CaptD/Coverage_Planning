@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find coverage)/worlds/wingbay.world"/> <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+    <arg name="paused" value="true"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description"
+	 command="$(find xacro)/xacro.py '$(find coverage)/robots/crawler.xacro'" />
+
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+	args="-urdf -model crawler -param robot_description -x 1 -y 0 -z 0.2 -Y 3.14159265 -J wrist_pitch_joint -0.8 arm_yaw_joint 3.14159265"/>
+
+  <!--node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+	args="-urdf -model crawler -param robot_description -x 3 -y 0 -z 0 -Y 3.14159265 -J arm_yaw_joint 3.14159265"/-->
+
+  <!--node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /-->
+
+
+  <include file="$(find crawler_control)/launch/crawler_control.launch"/>
+  <node pkg="rviz" type="rviz" name="rviz"/>
+
+</launch>

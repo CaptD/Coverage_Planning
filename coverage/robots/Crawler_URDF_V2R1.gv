@@ -1,0 +1,35 @@
+digraph G {
+node [shape=box];
+"chasis_link" [label="chasis_link"];
+"cmass_left_link" [label="cmass_left_link"];
+"cmass_right_link" [label="cmass_right_link"];
+"trans_base_link" [label="trans_base_link"];
+"arm_yaw_link" [label="arm_yaw_link"];
+"arm_pitch_link" [label="arm_pitch_link"];
+"arm_prismatic_link" [label="arm_prismatic_link"];
+"wrist_pitch_link" [label="wrist_pitch_link"];
+"wrist_roll_link" [label="wrist_roll_link"];
+"tool_link" [label="tool_link"];
+"hokuyo_link" [label="hokuyo_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"chasis_link" -> "cmass_left_joint" [label="xyz: 0 -0.002 -0.015 \nrpy: 0 0 -1.5708"]
+"cmass_left_joint" -> "cmass_left_link"
+"chasis_link" -> "cmass_right_joint" [label="xyz: 0 0.002 -0.015 \nrpy: 0 0 -1.5708"]
+"cmass_right_joint" -> "cmass_right_link"
+"chasis_link" -> "trans_base_joint" [label="xyz: 0 0 0 \nrpy: 0 0 -1.5708"]
+"trans_base_joint" -> "trans_base_link"
+"trans_base_link" -> "Arm_yaw_joint" [label="xyz: 0 0.0895 0.035016 \nrpy: -2.70558e-16 4.06447e-16 -2.22692e-31"]
+"Arm_yaw_joint" -> "arm_yaw_link"
+"arm_yaw_link" -> "arm_pitch_joint" [label="xyz: -0.0015 0 0.043 \nrpy: -3.27943e-15 -1.5708 3.14159"]
+"arm_pitch_joint" -> "arm_pitch_link"
+"arm_pitch_link" -> "arm_prismatic_joint" [label="xyz: 0.0637688 0.09977 -0.0015 \nrpy: -6.84648e-17 2.07187e-15 -1.66533e-15"]
+"arm_prismatic_joint" -> "arm_prismatic_link"
+"arm_prismatic_link" -> "wrist_pitch_joint" [label="xyz: 0 0 0 \nrpy: 3.10013e-16 -3.3171e-16 0.785398"]
+"wrist_pitch_joint" -> "wrist_pitch_link"
+"wrist_pitch_link" -> "wrist_roll_joint" [label="xyz: 0 0.0127 0 \nrpy: -2.089 1.5708 3.14159"]
+"wrist_roll_joint" -> "wrist_roll_link"
+"wrist_roll_link" -> "tool_joint" [label="xyz: 0 0.0712743 -0.119296 \nrpy: 0.523599 2.54655e-13 -4.37025e-13"]
+"tool_joint" -> "tool_link"
+"tool_link" -> "hokuyo_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"hokuyo_joint" -> "hokuyo_link"
+}

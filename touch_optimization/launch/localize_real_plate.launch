@@ -1,0 +1,44 @@
+<launch>
+
+<!-- This is used to load the cad files for visualization and ray tracing.  -->
+<!-- There needs to be corresponding files  -->
+<!-- gazebo_ray_trace/sdf/[localization_object_cad].stl -->
+<!-- gazebo_ray_trace/worlds/[localization_object_cad].world -->
+  <arg name="localization_object" default="real_plate"/>
+
+  <param name="localization_object_cad" type="str" 
+	 value="package://gazebo_ray_trace/sdf/$(arg localization_object).stl"/>
+  <param name="localization_object" type="str"
+	 value="$(arg localization_object)"/>
+
+  
+  <rosparam param="initial_uncertainties">
+    [.01, .01, .04, 0.2, 0.2, 0.2]
+    <!-- [.1, .1, .1, 0.2, 0.2, 0.2] -->
+    <!-- [.05, .05, .05, 0,0,0] -->
+  </rosparam>
+
+  <rosparam param="particle_frame">
+    <!-- [0.45, 0.31, 1.19, 0, 1.57, 0.7] -->
+    <!-- [0.62, 0.48, 1.19, 0, 1.57, 0.7] -->
+    [-0.25, 0, 0.05, 0, 0, 0]
+    <!-- [0.49, 0.35, 1.19, 0, 1.57, 0.7] -->
+  </rosparam>
+
+
+  <!-- <node pkg="ipc_ros_bridge" type="ipc_ros_bridge_test" name="ipc_ros_bridge" output="screen"/> -->
+
+<!-- Temporary file used to generate particles and send images to RViz -->
+  <include file="$(find using_markers)/launch/particles.launch"/>
+
+  <include file="$(find particle_filter)/launch/pfilter6DOF.launch"/>
+
+<!-- Gazebo ray tracing service used to calculate values of a touch -->
+  <include file="$(find gazebo_ray_trace)/launch/headless_ray_tracing_service.launch">
+    <arg name="world_name" 
+	 value="$(find gazebo_ray_trace)/worlds/$(arg localization_object).world"/>
+  </include>
+
+
+
+</launch>

@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<robot>
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/crawler</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="chasis_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="trans_base_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="arm_yaw_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>grey</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="arm_pitch_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>grey</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="arm_prismatic_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>grey</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="wrist_pitch_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>brown</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="wrist_roll_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>brown</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="tool_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>white</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="cmass_right_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <gazebo reference="cmass_left_link">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Black</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <!-- hokuyo -->
+  <gazebo reference="hokuyo_link">
+    <sensor type="ray" name="hokuyo_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.5</min_angle>
+            <max_angle>1.5</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.0</stddev>
+        </noise>
+      </ray>
+      <plugin name="hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/laser/scan</topicName>
+        <frameName>hokuyo_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+</robot>

@@ -1,0 +1,7 @@
+geometry_msgs/Point start
+geometry_msgs/Point end
+float64 error_radius
+float64 error_depth
+---
+RayIntersections[] rays
+float64 IG

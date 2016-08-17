@@ -1,0 +1,14 @@
+digraph G {
+"chasis_link" -> "cmass_left_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.233 Hz\nMost recent transform: 18.140 ( 0.015 sec old)\nBuffer length: 4.300 sec\n"];
+"chasis_link" -> "cmass_right_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.233 Hz\nMost recent transform: 18.140 ( 0.015 sec old)\nBuffer length: 4.300 sec\n"];
+"tool_link" -> "hokuyo_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.233 Hz\nMost recent transform: 18.647 ( -0.492 sec old)\nBuffer length: 4.300 sec\n"];
+"wrist_roll_link" -> "tool_link"[label="Broadcaster: /robot_state_publisher\nAverage rate: 50.233 Hz\nMost recent transform: 18.647 ( -0.492 sec old)\nBuffer length: 4.300 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 18.155"[ shape=plaintext ] ;
+ }->"chasis_link";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 18.155"[ shape=plaintext ] ;
+ }->"wrist_roll_link";
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+
+    <model name="box">
+      <!-- <allow_auto_disable>true</allow_auto_disable> -->
+      <link name="mesh_link">
+        <pose>0 0 0 0 0 0</pose>
+
+        <collision name="box_collision">
+          <geometry>
+	    <mesh>
+	      <uri>model://gazebo_ray_trace/sdf/box.stl</uri>
+	      <scale>0.0254 0.0254 0.0254</scale>
+	    </mesh>
+	    <!--box>
+               <size>1 1 1</size>
+            </box-->
+          </geometry>
+
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+	    <mesh>
+	      <uri>model://gazebo_ray_trace/sdf/box.stl</uri>
+	      <scale>0.0254 0.0254 0.0254</scale>
+	    </mesh>
+          <!--box>
+          <size>1 1 1</size>
+          </box-->
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <plugin filename="libdistance_ray_trace.so" name="ray_tracer"/>
+  </world>
+</sdf>

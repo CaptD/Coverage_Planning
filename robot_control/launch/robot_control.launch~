@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<launch>
+   <!-- Load joint controller configurations from YAML file to parameter server -->
+  <!--rosparam file="$(find robot_control)/config/crawler_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <!--node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/crawler" args="joint_state_controller cmass_right_joint_position_controller"/-->
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+  <remap from="/joint_states" to="/crawler/joint_states" />
+  </node-->
+  <node name="robot_control" pkg="robot_control" type="robot_control_node" output="screen">
+    <!--param name="mass"          type="double"           value="1.0"/>
+    <param name="inertia"       type="double"           value="1.0"/>
+    <param name="freq"          type="double"           value="100.0"/>
+    <param name="max_force"     type="double"           value="1.0"/>
+    <param name="max_torque"    type="double"           value="1.0"/>
+    <param name="pos_p"         type="double"           value="1.0"/>
+    <param name="pos_i"         type="double"           value="0.001"/>
+    <param name="pos_d"         type="double"           value="2.0"/>
+    <param name="ori_p"         type="double"           value="1.0"/>
+    <param name="ori_i"         type="double"           value="0.0"/>
+    <param name="ori_d"         type="double"           value="1.0"/-->
+  </node>
+
+</launch>

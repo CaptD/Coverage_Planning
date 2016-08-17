@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+
+    <model name="boeing_model">
+      <!-- <allow_auto_disable>true</allow_auto_disable> -->
+      <link name="mesh_link">
+        <pose>0 0 0 0 0 0</pose>
+
+        <collision name="mesh_collision">
+          <geometry>
+    	    <mesh>
+	      <uri>model://gazebo_ray_trace/sdf/wood_boeing.stl</uri>
+	      <scale>0.0254 0.0254 0.0254</scale>
+	    </mesh>
+
+          </geometry>
+
+        </collision>
+
+        <visual name="mesh_visual">
+          <geometry>
+    	    <mesh>
+	      <uri>model://gazebo_ray_trace/sdf/wood_boeing.stl</uri>
+	      <scale>0.0254 0.0254 0.0254</scale>
+	    </mesh>
+
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <plugin filename="libdistance_ray_trace.so" name="ray_tracer"/>
+  </world>
+</sdf>

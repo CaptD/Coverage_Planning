@@ -1,0 +1,16 @@
+geometry_msgs/Vector3 direction
+float64 x_start
+float64 x_end
+float64 x_bins
+float64 y_start
+float64 y_end
+float64 y_bins
+float64 z_start
+float64 z_end
+float64 z_bins
+float64 err_radius
+float64 err_dist
+geometry_msgs/TransformStamped trans
+---
+geometry_msgs/Point best
+float64 IG

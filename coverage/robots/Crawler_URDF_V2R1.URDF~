@@ -1,0 +1,555 @@
+<robot
+  name="Crawler_URDF_V2R1">
+  <link
+    name="chasis_link">
+    <inertial>
+      <origin
+        xyz="-0.0718108193337467 -1.28350131512568E-17 0.0622831434710217"
+        rpy="0 0 0" />
+      <mass
+        value="9.63949891888311" />
+      <inertia
+        ixx="0.12516602042126"
+        ixy="7.49196631910654E-17"
+        ixz="-0.00427488292650829"
+        iyy="0.175105655940575"
+        iyz="8.82359298896177E-18"
+        izz="0.280074215069266" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/chasis_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.9 0.52 0.03 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/chasis_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="trans_base_link">
+    <inertial>
+      <origin
+        xyz="-1.16409223255061E-17 0.0111493414862326 0.0312014794506156"
+        rpy="0 0 0" />
+      <mass
+        value="1.52634919066965" />
+      <inertia
+        ixx="0.00515878833887719"
+        ixy="-1.31557622664736E-18"
+        ixz="3.24734879528405E-18"
+        iyy="0.00547975843460313"
+        iyz="-0.000384362169845534"
+        izz="0.0100724945573142" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/trans_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/trans_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="trans_base_joint"
+    type="prismatic">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 -1.5707963267949" />
+    <parent
+      link="chasis_link" />
+    <child
+      link="trans_base_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0.19"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="arm_yaw_link">
+    <inertial>
+      <origin
+        xyz="-0.00212537608285478 -0.000611402181059734 0.0322390695229115"
+        rpy="0 0 0" />
+      <mass
+        value="0.361799671756217" />
+      <inertia
+        ixx="0.000327814456834869"
+        ixy="4.79453753360904E-06"
+        ixz="2.68851639585549E-05"
+        iyy="0.000349984731920421"
+        iyz="-4.70523012181893E-06"
+        izz="0.000437706123674794" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/arm_yaw_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/arm_yaw_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Arm_yaw_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.0894999999999992 0.0350160000000001"
+      rpy="-2.70558177018507E-16 4.0644694425605E-16 -2.22692292089346E-31" />
+    <parent
+      link="trans_base_link" />
+    <child
+      link="arm_yaw_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="arm_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.058957667264048 -0.14005721103525 0.00195530693898361"
+        rpy="0 0 0" />
+      <mass
+        value="1.85488275899258" />
+      <inertia
+        ixx="0.0257712444565226"
+        ixy="-0.000439691693175264"
+        ixz="2.12917262387435E-05"
+        iyy="0.00392606737781297"
+        iyz="-6.57668892492242E-05"
+        izz="0.0223656996218578" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/arm_pitch_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/arm_pitch_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm_pitch_joint"
+    type="revolute">
+    <origin
+      xyz="-0.00150000000000006 0 0.0430000000000009"
+      rpy="3.14159265358979 -1.5707963267949 0" />
+    <parent
+      link="arm_yaw_link" />
+    <child
+      link="arm_pitch_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-0.5236"
+      upper="0.5236"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="arm_prismatic_link">
+    <inertial>
+      <origin
+        xyz="0.00101633881757435 -0.17912571490332 4.24038297894937E-13"
+        rpy="0 0 0" />
+      <mass
+        value="0.110019786871871" />
+      <inertia
+        ixx="0.00126342890038883"
+        ixy="-1.38410348401843E-06"
+        ixz="-2.10746281664458E-16"
+        iyy="7.23043976475078E-06"
+        iyz="2.98076107893858E-15"
+        izz="0.00126085275676098" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/arm_prismatic_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/arm_prismatic_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm_prismatic_joint"
+    type="prismatic">
+    <origin
+      xyz="0.0637687500000009 0.0997699999999998 -0.00150000000000007"
+      rpy="-6.84647635570909E-17 2.07186503040649E-15 -1.66533453693773E-15" />
+    <parent
+      link="arm_pitch_link" />
+    <child
+      link="arm_prismatic_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0.2"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wrist_pitch_link">
+    <inertial>
+      <origin
+        xyz="-0.000157908793528061 0.00647785036964442 -1.07871940057725E-10"
+        rpy="0 0 0" />
+      <mass
+        value="0.0052834540116087" />
+      <inertia
+        ixx="3.41063336130693E-07"
+        ixy="-5.19121917890578E-09"
+        ixz="4.11871203891018E-15"
+        iyy="2.61306801017281E-07"
+        iyz="5.33770883687485E-15"
+        izz="3.71822826705575E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/wrist_pitch_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/wrist_pitch_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_pitch_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="3.10012744244417E-16 -3.31709848220105E-16 0.785398163397451" />
+    <parent
+      link="arm_prismatic_link" />
+    <child
+      link="wrist_pitch_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="1.5708"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wrist_roll_link">
+    <inertial>
+      <origin
+        xyz="-8.09201485032211E-13 0.0176652489088963 -0.0598217944845348"
+        rpy="0 0 0" />
+      <mass
+        value="0.998352787983994" />
+      <inertia
+        ixx="0.00175421545173074"
+        ixy="1.95449401675843E-11"
+        ixz="1.1324074691189E-11"
+        iyy="0.00161742752886147"
+        iyz="4.97287433894453E-05"
+        izz="0.00159506019582084" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/wrist_roll_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/wrist_roll_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_roll_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.0127 0"
+      rpy="1.0471975511966 1.5707963267949 0" />
+    <parent
+      link="wrist_pitch_link" />
+    <child
+      link="wrist_roll_link" />
+    <axis
+      xyz="0 0.866025403784438 0.500000000000002" />
+    <limit
+      lower="-0.5236"
+      upper="0.5236"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="tool_link">
+    <inertial>
+      <origin
+        xyz="-7.91564462318793E-13 -0.0166761289891899 0.0782580600328448"
+        rpy="0 0 0" />
+      <mass
+        value="0.999157186107061" />
+      <inertia
+        ixx="0.00175794457946145"
+        ixy="2.25883696475666E-11"
+        ixz="3.44074507537555E-14"
+        iyy="0.00157227459030867"
+        iyz="3.36695904433802E-05"
+        izz="0.00164394631652227" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/tool_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/tool_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="tool_joint"
+    type="fixed">
+    <origin
+      xyz="0 0.0712742774072239 -0.119296224850817"
+      rpy="0.5235987755983 2.5465504479723E-13 -4.3702480791196E-13" />
+    <parent
+      link="wrist_roll_link" />
+    <child
+      link="tool_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="cmass_left_link">
+    <inertial>
+      <origin
+        xyz="-0.168 -0.0037764386701836 0.0655"
+        rpy="0 0 0" />
+      <mass
+        value="0.544396872641283" />
+      <inertia
+        ixx="0.0096631158782445"
+        ixy="-3.28637747652432E-19"
+        ixz="-5.70383169818916E-20"
+        iyy="0.000448883258665779"
+        iyz="1.50880603985698E-18"
+        izz="0.00922729814452189" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/cmass_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/cmass_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cmass_left_joint"
+    type="prismatic">
+    <origin
+      xyz="0 -0.00200000000000006 -0.0150000000000001"
+      rpy="0 0 -1.5707963267949" />
+    <parent
+      link="chasis_link" />
+    <child
+      link="cmass_left_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0.175"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="cmass_right_link">
+    <inertial>
+      <origin
+        xyz="0.168 -0.0037764386701837 0.0655000000000001"
+        rpy="0 0 0" />
+      <mass
+        value="0.544396872641283" />
+      <inertia
+        ixx="0.0096631158782445"
+        ixy="2.1778299864664E-17"
+        ixz="-7.66009249587078E-20"
+        iyy="0.000448883258665848"
+        iyz="8.06573664469227E-19"
+        izz="0.00922729814452197" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/cmass_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Crawler_URDF_V2R1/meshes/cmass_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cmass_right_joint"
+    type="prismatic">
+    <origin
+      xyz="0 0.00200000000000006 -0.0150000000000001"
+      rpy="0 0 -1.5707963267949" />
+    <parent
+      link="chasis_link" />
+    <child
+      link="cmass_right_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+</robot>
